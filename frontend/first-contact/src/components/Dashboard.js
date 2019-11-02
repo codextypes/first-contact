@@ -7,7 +7,9 @@ import Typography from "@material-ui/core/Typography";
 import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 import DeleteOutlineOutlinedIcon from "@material-ui/icons/DeleteOutlineOutlined";
 import EditOutlinedIcon from "@material-ui/icons/EditOutlined";
+import IconButton from '@material-ui/core/IconButton';
 import Navbar from "./Navbar";
+import Modal from "./Modal";
 import { CardActions } from "@material-ui/core";
 
 const styles = theme => ({
@@ -85,8 +87,13 @@ class Dashboard extends Component {
           name: "Jake",
           alias: "Chicago"
         }
-      ]
+      ],
+
     };
+  }
+
+  toggleModal = () => {
+    return <Modal/>
   }
 
   render() {
@@ -94,7 +101,6 @@ class Dashboard extends Component {
     return (
       <div>
         <Navbar />
-        <AddCircleOutlineIcon  />
         <Card className={styles.card}>
           {users.map((user, i) => {
             return (
@@ -109,26 +115,30 @@ class Dashboard extends Component {
                   </Typography>
                   <Typography
                     className={styles.title}
-                    variant="body2"
-                    component="p"
+                    // variant="body2"
+                    // component="p"
                   >
                     {user.name}
                   </Typography>
                   <CardActions>
+                  <IconButton onClick={this.toggleModal}>
                   <EditOutlinedIcon
                     className={styles.buttons}
-                    onClick={() => console.log("clicked edit")}
                   />
+                  </IconButton>
+                  <IconButton>
                   <DeleteOutlineOutlinedIcon
                     className={styles.buttons}
                     onClick={() => console.log("clicked delete")}
                   />
+                  </IconButton>
                   </CardActions>
                 </UserCard>
               </CardContent>
             );
           })}
         </Card>
+        {/* <Modal /> */}
       </div>
     );
   }
