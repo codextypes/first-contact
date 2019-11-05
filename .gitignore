@@ -108,3 +108,8 @@ venv.bak/
 
 # SQLite3
 *.db
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
